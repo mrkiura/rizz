@@ -1,4 +1,5 @@
 from wsgiref.simple_server import make_server
+from middleware import Reverseware
 
 
 def application(environ, start_response):
@@ -14,5 +15,5 @@ def application(environ, start_response):
     return [response_body.encode("utf-8")]
 
 
-server = make_server("localhost", 8000, app=application)
+server = make_server("localhost", 8000, app=Reverseware(application))
 server.serve_forever()
