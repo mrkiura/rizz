@@ -2,6 +2,9 @@ from webob import Request, Response
 
 
 class API:
+    def __init__(self):
+        self.routes = {}
+
     def __call__(self, environ, start_response):
         request = Request(environ)
         response = self.handle_request(request)
@@ -12,3 +15,10 @@ class API:
         response = Response()
         response.text = f"Hello, my friend with this user agent: {user_agent}"
         return response
+
+    def route(self, path):
+        def wrapper(handler):
+            self.routes[path] = handler
+            return handler
+
+        return wrapper
