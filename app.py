@@ -19,11 +19,6 @@ def greeting(request, response, name):
     response.text = f"Hello, {name}"
 
 
-@app.route("/hello/{name}")
-def greeting2(request, response, name):
-    response.text = f"Hello, {name}"
-
-
 @app.route("/tell/{age:d}")
 def show_age(request, response, age):
     response.text = f"Age {age}"
@@ -39,3 +34,12 @@ def show_type(request, response, var):
 @app.route("/sum/{num_1:d}/{num_2:d}")
 def sum(request, response, num_1, num_2):
     response.text = f"{num_1} + {num_2} = {num_1 + num_2}"
+
+
+@app.route("/book")
+class BooksResource:
+    def get(self, req, resp):
+        resp.text = "Books Page"
+
+    def post(self, req, resp):
+        resp.text = "Endpoint to create a book"
