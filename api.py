@@ -30,8 +30,7 @@ class API:
         return response
 
     def route(self, path):
-        if path in self.routes:
-            raise AssertionError("Route already defined.")
+        assert path not in self.routes, "Route already defined."
 
         def wrapper(handler):
             self.routes[path] = handler

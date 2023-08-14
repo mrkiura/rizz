@@ -19,6 +19,11 @@ def greeting(request, response, name):
     response.text = f"Hello, {name}"
 
 
+@app.route("/hello/{name}")
+def greeting2(request, response, name):
+    response.text = f"Hello, {name}"
+
+
 @app.route("/tell/{age:d}")
 def show_age(request, response, age):
     response.text = f"Age {age}"
