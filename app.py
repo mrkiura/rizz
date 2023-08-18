@@ -51,7 +51,12 @@ def handler(request, response):
 
 
 def custom_exception_handler(request, response, exception_cls):
-    response.text = str(exception_cls)
+    response.body = app.template(
+        "error.html",
+        context={
+            "title": "Error",
+            "message": str(exception_cls)
+        }, ).encode()
 
 
 app.add_exception_handler(custom_exception_handler)
