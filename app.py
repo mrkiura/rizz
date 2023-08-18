@@ -31,6 +31,11 @@ def show_type(request, response, var):
     response.text = f"type: {var}"
 
 
+@app.route("/template")
+def template_handler(request, response):
+    response.body = app.template("index.html", context={"title": "Rizz Home", "name": "Rizz"}).encode()
+
+
 @app.route("/sum/{num_1:d}/{num_2:d}")
 def sum(request, response, num_1, num_2):
     response.text = f"{num_1} + {num_2} = {num_1 + num_2}"
