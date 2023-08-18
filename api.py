@@ -37,10 +37,8 @@ class API:
         return response
 
     def route(self, path):
-        assert path not in self.routes, f"Route {path} already defined."
-
         def wrapper(handler):
-            self.routes[path] = handler
+            self.add_route(path, handler)
             return handler
 
         return wrapper
@@ -53,3 +51,7 @@ class API:
         session = RequestsSession()
         session.mount(prefix=base_url, adapter=RequestsWSGIAdapter(self))
         return session
+
+    def add_route(self, path, handler):
+        assert path not in self.routes, f"Route {path} already defined."
+        self.routes[path] = handler
