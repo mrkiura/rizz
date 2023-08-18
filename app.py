@@ -19,11 +19,6 @@ def greeting(request, response, name):
     response.text = f"Hello, {name}"
 
 
-@app.route("/hello/{name}")
-def greeting2(request, response, name):
-    response.text = f"Hello, {name}"
-
-
 @app.route("/tell/{age:d}")
 def show_age(request, response, age):
     response.text = f"Age {age}"
@@ -41,6 +36,10 @@ def sum(request, response, num_1, num_2):
     response.text = f"{num_1} + {num_2} = {num_1 + num_2}"
 
 
+def handler(request, response):
+    response.text = "Sample handler"
+
+
 @app.route("/book")
 class BooksResource:
     def get(self, req, resp):
@@ -48,3 +47,6 @@ class BooksResource:
 
     def post(self, req, resp):
         resp.text = "Endpoint to create a book"
+
+
+app.add_route("/sample", handler)
