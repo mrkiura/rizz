@@ -41,8 +41,20 @@ def sum(request, response, num_1, num_2):
     response.text = f"{num_1} + {num_2} = {num_1 + num_2}"
 
 
+@app.route("/exception")
+def exception_throwing_handler(request, response):
+    raise AssertionError("This handler should not be used.")
+
+
 def handler(request, response):
     response.text = "Sample handler"
+
+
+def custom_exception_handler(request, response, exception_cls):
+    response.text = str(exception_cls)
+
+
+app.add_exception_handler(custom_exception_handler)
 
 
 @app.route("/book")

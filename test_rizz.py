@@ -111,3 +111,17 @@ def test_template(api, client):
     assert "text/html" in response.headers["Content-Type"]
     assert "Some Title" in response.text
     assert "Some Name" in response.text
+
+
+def test_custom_exception_handler(api, client):
+    def on_exception(req, resp, exc):
+        resp.text = "AttributeErrorHappened"
+
+    api.add_exception_handler(on_exception)
+
+    @api.route("/exception")
+    def exception_throwing_handler(req, resp):
+        raise AttributeError()
+
+    response = client.get("http://testserver/exception")
+    assert response.text == "AttributeErrorHappened"
