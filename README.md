@@ -1,1 +1,1 @@
-Building a WSGI web framework in python
+Another WSGI web framework built with python
