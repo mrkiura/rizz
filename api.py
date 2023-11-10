@@ -28,7 +28,7 @@ class API:
     def add_exception_handler(self, exception_handler):
         self.exception_handler = exception_handler
 
-    def find_handler(self, request_path):
+    def find_handler(self, request_path: str):
         for path, handler in self.routes.items():
             parsed = parse(path, request_path)
             if parsed is not None:
