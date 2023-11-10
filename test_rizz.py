@@ -126,7 +126,7 @@ def test_template(api, client):
 
 def test_custom_exception_handler(api, client):
     def on_exception(req, resp, exc):
-        resp.text = "AttributeErrorHappened"
+        resp.text = "Oops! AttributeErrorHappened"
 
     api.add_exception_handler(on_exception)
 
