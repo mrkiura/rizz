@@ -1,3 +1,3 @@
 # Rizz
 
-Building a WSGI web framework in python
+A framework for building web applications with Python
