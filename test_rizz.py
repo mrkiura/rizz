@@ -199,7 +199,7 @@ def test_json_response_helper(api, client):
     def json_handler(request, response):
         response.json = {"name": "Rizz"}
 
-    response = client.get("http://testserver/html")
+    response = client.get("http://testserver/json")
     json_body = response.json()
     assert response.headers["Content-Type"] == "application/json"
     assert json_body["name"] == "Rizz"
