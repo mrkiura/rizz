@@ -33,7 +33,10 @@ def show_type(request, response, var):
 
 @app.route("/template")
 def template_handler(request, response):
-    response.body = app.template("index.html", context={"title": "Rizz Home", "name": "Rizz"}).encode()
+    response.body = app.template(
+        "index.html",
+        context={"title": "Rizz Home", "name": "Rizz"}
+    ).encode()
 
 
 @app.route("/sum/{num_1:d}/{num_2:d}")
