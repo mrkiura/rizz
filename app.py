@@ -1,4 +1,5 @@
 from api import API
+from middleware import Middleware
 
 
 app = API()
@@ -77,5 +78,9 @@ class BooksResource:
 class PrintMiddleware(Middleware):
     def process_request(self, request):
         print("Processing request", request.url)
+
+    def process_response(self, response):
+        print("Processing Response", response)
+
 
 app.add_route("/sample", handler)
