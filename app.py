@@ -54,6 +54,11 @@ def json_handler(requeust, response):
     response.json = {"name": "data", "type": "JSON"}
 
 
+@app.route("/text")
+def text_handler(request, response):
+    response.text = "Simple Text Response"
+
+
 def handler(request, response):
     response.text = "Sample handler"
 
