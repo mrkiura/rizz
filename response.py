@@ -13,6 +13,7 @@ class Response:
         self.status_code = 200
 
     def __call__(self, environ, start_response) -> Any:
+        self._set_body_and_content_type()
         response = WebObResponse(
             body=self.body,
             content_type=self.content_type,
@@ -20,7 +21,7 @@ class Response:
         )
         return response(environ, start_response)
 
-    def set_body_and_content_type(self):
+    def _set_body_and_content_type(self):
         if self.json is not None:
             self.body = json.dumps(self.json).encode("UTF-8")
             self.content_type = "application/json"
