@@ -60,7 +60,6 @@ class API:
                     if handler is None:
                         raise AttributeError("Method not allowed", request.method)
                 else:
-                    print(f"allowed methods {allowed_methods}")
                     if request.method.lower() not in allowed_methods:
                         raise AttributeError("Method not allowed", request.method)
                 handler(request, response, **kwargs)
