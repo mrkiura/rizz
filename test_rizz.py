@@ -203,3 +203,14 @@ def test_json_response_helper(api, client):
     json_body = response.json()
     assert response.headers["Content-Type"] == "application/json"
     assert json_body["name"] == "Rizz"
+
+
+def test_html_response_helper(api, client):
+    @api.route("/html")
+    def html_handler(request, response):
+        response.html = api.template("index.html", context={"title": "Another, Title", "name": "Another, Banger"})
+    response = client.get("http://testserver/html")
+
+    assert "text/html" in response.headers["Content-Type"]
+    assert "Another, Title" in response.text
+    assert "Another, Banger" in response.text
