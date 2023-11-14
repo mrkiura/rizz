@@ -192,3 +192,14 @@ def test_allowed_methods_for_function_based_handlers(api, client):
         client.get("http://testserver/home")
 
     assert client.post("http://testserver/home").text == "Hey"
+
+
+def test_json_response_helper(api, client):
+    @api.route("/json")
+    def json_handler(request, response):
+        response.json = {"name": "Rizz"}
+
+    response = client.get("http://testserver/html")
+    json_body = response.json()
+    assert response.headers["Content-Type"] == "application/json"
+    assert json_body["name"] == "Rizz"
