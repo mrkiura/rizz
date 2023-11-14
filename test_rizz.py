@@ -208,7 +208,11 @@ def test_json_response_helper(api, client):
 def test_html_response_helper(api, client):
     @api.route("/html")
     def html_handler(request, response):
-        response.html = api.template("index.html", context={"title": "Another, Title", "name": "Another, Banger"})
+        response.html = api.template(
+            "index.html",
+            context={"title": "Another, Title", "name": "Another, Banger"}
+        )
+
     response = client.get("http://testserver/html")
 
     assert "text/html" in response.headers["Content-Type"]
