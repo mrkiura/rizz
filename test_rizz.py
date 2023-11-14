@@ -57,7 +57,6 @@ def test_parameterized_route(api, client):
     @api.route("/{name}")
     def hello(req, resp, name):
         resp.text = f"hey {name}"
-    print("client", client)
 
     assert client.get("http://testserver/alex").text == "hey alex"
     assert client.get("http://testserver/ben").text == "hey ben"
@@ -149,8 +148,8 @@ def test_assets_are_served(tmpdir_factory):
 
     api = API(static_dir=str(static_dir))
     client = api.test_session()
-
-    response = client.get(f"http://testserver/{FILE_DIR}/{FILE_NAME}")
+    static_url = f"http://testserver/static/{FILE_DIR}/{FILE_NAME}"
+    response = client.get(static_url)
     assert response.status_code == 200
     assert response.text == FILE_CONTENTS
 
