@@ -214,3 +214,16 @@ def test_html_response_helper(api, client):
     assert "text/html" in response.headers["Content-Type"]
     assert "Another, Title" in response.text
     assert "Another, Banger" in response.text
+
+
+def test_text_response_helper(api, client):
+    response_text = "Plain Text"
+
+    @api.route("/text")
+    def text_handler(request, response):
+        response.text = response_text
+
+    response = client.get("http://testserver/text")
+
+    assert "text/plain" in response.headers["Content-Type"]
+    assert response.text == response.text
