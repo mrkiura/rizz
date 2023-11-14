@@ -1,11 +1,14 @@
 import inspect
 import os
-from parse import parse
-from webob import Request, Response
-from requests import Session as RequestsSession
-from wsgiadapter import WSGIAdapter as RequestsWSGIAdapter
+
 from jinja2 import Environment, FileSystemLoader
+from parse import parse
+from requests import Session as RequestsSession
+from webob import Request, Response
 from whitenoise import WhiteNoise
+from wsgiadapter import WSGIAdapter as RequestsWSGIAdapter
+
+from middleware import Middleware
 
 
 class API:
