@@ -1,6 +1,7 @@
 import pytest
 
 from api import API
+from middleware import Middleware
 
 
 FILE_DIR = "css"
@@ -135,7 +136,7 @@ def test_custom_exception_handler(api, client):
         raise AttributeError()
 
     response = client.get("http://testserver/exception")
-    assert response.text == "AttributeErrorHappened"
+    assert response.text == "Oops! AttributeErrorHappened"
 
 
 def test_404_is_returned_for_non_existent_static_file(client):
@@ -160,17 +161,16 @@ def test_middleware_methods_are_called(api, client):
     process_response_called = False
 
     class CallMiddlewareMethods(Middleware):
-        def __init__(self, *args, **kwargs):
+        def __init__(self, app):
             super().__init__(app)
 
-        def process_request(self, req):
+        def process_request(self, request):
             nonlocal process_request_called
             process_request_called = True
 
-        def process_response(self, req, resp):
+        def process_response(self, request, response):
             nonlocal process_response_called
-            process_response_called = False
-
+            process_response_called = True
 
     api.add_middleware(CallMiddlewareMethods)
 
