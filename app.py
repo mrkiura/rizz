@@ -74,4 +74,8 @@ class BooksResource:
         resp.text = "Endpoint to create a book"
 
 
+class PrintMiddleware(Middleware):
+    def process_request(self, request):
+        print("Processing request", request.url)
+
 app.add_route("/sample", handler)
