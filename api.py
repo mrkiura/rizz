@@ -60,6 +60,7 @@ class API:
                     if handler is None:
                         raise AttributeError("Method not allowed", request.method)
                 else:
+                    print(f"allowed methods {allowed_methods}")
                     if request.method.lower() not in allowed_methods:
                         raise AttributeError("Method not allowed", request.method)
                 handler(request, response, **kwargs)
@@ -75,7 +76,7 @@ class API:
 
     def route(self, path, allowed_methods=None):
         def wrapper(handler):
-            self.add_route(path, handler)
+            self.add_route(path, handler, allowed_methods)
             return handler
 
         return wrapper

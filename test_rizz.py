@@ -191,4 +191,4 @@ def test_allowed_methods_for_function_based_handlers(api, client):
     with pytest.raises(AttributeError):
         client.get("http://testserver/home")
 
-    assert client.post("htttp://testserver/home").text == "Hey"
+    assert client.post("http://testserver/home").text == "Hey"
