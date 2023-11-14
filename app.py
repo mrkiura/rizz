@@ -49,6 +49,11 @@ def template_handler(request, response):
     ).encode()
 
 
+@app.route("/json")
+def json_handler(requeust, response):
+    response.json = {"name": "data", "type": "JSON"}
+
+
 def handler(request, response):
     response.text = "Sample handler"
 
