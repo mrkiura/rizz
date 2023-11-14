@@ -1,6 +1,14 @@
+from webob import Request
+
+
 class Middleware:
     def __init__(self, app) -> None:
         self.app = app
+
+    def __call__(self, environ, start_response):
+        request = Request(environ)
+        response = self.app.handle_request(request)
+        return response(environ, start_response)
 
     def add(self, middeware_cls):
         self.app = middeware_cls(self.app)
