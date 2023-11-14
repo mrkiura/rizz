@@ -75,9 +75,11 @@ class API:
 
         return wrapper
 
-    def add_route(self, path, handler):
+    def add_route(self, path, handler, allowed_methods=None):
         assert path not in self.routes, f"Route {path} already defined."
-        self.routes[path] = handler
+        if allowed_methods is None:
+            allowed_methods = ["get", "post", "put", "patch", "delete", "options"]
+        self.routes[path] = {"handler": handler, "allowed_methods": allowed_methods}
 
     def default_response(self, response):
         response.status_code = 404
