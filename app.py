@@ -35,8 +35,7 @@ def show_type(request, response, var):
 @app.route("/template")
 def template_handler(request, response):
     response.body = app.template(
-        "index.html",
-        context={"title": "Rizz Home", "name": "Rizz"}
+        "index.html", context={"title": "Rizz Home", "name": "Rizz"}
     ).encode()
 
 
@@ -56,11 +55,8 @@ def handler(request, response):
 
 def custom_exception_handler(request, response, exception_cls):
     response.body = app.template(
-        "error.html",
-        context={
-            "title": "Error",
-            "message": str(exception_cls)
-        }).encode()
+        "error.html", context={"title": "Error", "message": str(exception_cls)}
+    ).encode()
 
 
 app.add_exception_handler(custom_exception_handler)
@@ -79,8 +75,9 @@ class PrintMiddleware(Middleware):
     def process_request(self, request):
         print("Processing request", request.url)
 
-    def process_response(self, response):
+    def process_response(self, request, response):
         print("Processing Response", response)
 
 
 app.add_route("/sample", handler)
+app.add_middleware(PrintMiddleware)
