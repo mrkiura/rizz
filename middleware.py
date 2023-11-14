@@ -10,3 +10,10 @@ class Middleware:
 
     def process_response(self, request, response):
         pass
+
+    def handle_request(self, request):
+        self.process_request(request)
+        response = self.app.handle_request(request)
+        self.process_response(request, response)
+
+        return response
