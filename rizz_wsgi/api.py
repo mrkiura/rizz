@@ -4,11 +4,11 @@ import os
 from jinja2 import Environment, FileSystemLoader
 from parse import parse
 from requests import Session as RequestsSession
-from response import Response
+from .response import Response
 from whitenoise import WhiteNoise
 from wsgiadapter import WSGIAdapter as RequestsWSGIAdapter
 
-from middleware import Middleware
+from .middleware import Middleware
 
 
 class API:
