@@ -14,7 +14,7 @@ DESCRIPTION = "Rizz WSGI Python Framework for science purposes."
 EMAIL = "kiuraalex@gmail.com"
 AUTHOR = "Alex Kiura"
 REQUIRES_PYTHON = ">=3.10.0"
-VERSION = "0.0.1"
+VERSION = "0.0.2"
 
 
 REQUIRED_PACKAGES = [
