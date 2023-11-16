@@ -1,7 +1,9 @@
 import pytest
 
-from api import API
-from middleware import Middleware
+# from api import API
+from rizz_wsgi.api import API
+from rizz_wsgi.middleware import Middleware
+# from middleware import Middleware
 
 
 FILE_DIR = "css"
@@ -17,7 +19,7 @@ def _create_static(static_dir):
 
 @pytest.fixture
 def api():
-    return API()
+    return API(templates_dir="tests/templates", static_dir="tests/static")
 
 
 @pytest.fixture
