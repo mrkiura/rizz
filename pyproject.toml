@@ -1,6 +1,6 @@
 [project]
 name = "rizz_wsgi"
-version = "0.0.4"
+version = "0.0.5"
 description = "Rizz is a Python web framework and can be used with any WSGI application server such as Gunicorn."
 readme = "README.md"
 requires-python = ">=3.10"
