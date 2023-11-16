@@ -14,6 +14,7 @@ from .middleware import Middleware
 class API:
     def __init__(self, templates_dir="templates", static_dir="static"):
         self.routes = {}
+        print(f"Loading templates from {os.path.abspath(templates_dir)}")
         self.templates_env = Environment(
             loader=FileSystemLoader(os.path.abspath(templates_dir))
         )
