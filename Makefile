@@ -7,7 +7,7 @@ clean:
 	rm -rf dist/*
 
 increment_version:
-	python3 increment_version.py
+	python3 scripts/increment_version.py
 
 upload:
 	python3 -m twine upload dist/*
