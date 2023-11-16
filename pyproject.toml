@@ -20,7 +20,7 @@ dependencies = [
     "whitenoise",
 ]
 [project.urls]
-"Homepage" = "https://github.com/mrkiura/rizz
+"Homepage" = "https://github.com/mrkiura/rizz"
 [build-system]
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
