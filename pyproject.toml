@@ -5,7 +5,7 @@ authors = [
     { name="Alex Kiura", email="kiuraalex@gmail.com" },
 ]
 description = "Rizz is a Python web framework and can be used with any WSGI application server such as Gunicorn."
-readme = "README.md
+readme = "README.md"
 requires-python = ">=3.10"
 classifiers = [
     "Programming Language :: Python :: 3",
